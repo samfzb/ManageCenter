@@ -3,6 +3,7 @@
 __author__ = 'shuhao.wang'
 
 from Desire.ManageCenter.ModelResources.ResCache import get_res_cache
+from Desire.ManageCenter.ModelResources.Resource import store
 from Desire.ManageCenter.Biz.errors import *
 
 
@@ -69,6 +70,13 @@ class ServerManager(object):
         # TODO: add code here
         pass
 
-    def get_servers_list(self):
-
-        pass
+    def get_servers_list(self, limit={}):
+        '''
+        get all servers
+        :param limit: {
+            start: 0 (an integer),
+            end : 100 (an integer)
+        }
+        :return:
+        '''
+        return store.load_resource_list("server", limit=limit)
